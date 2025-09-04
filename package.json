@@ -1,0 +1,37 @@
+{
+  "name": "practice-chris",
+  "version": "1.0.0",
+  "description": "NXT Gen Evo Practice Environment",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "node src/server.js",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "echo 'Building client...'",
+    "build:server": "echo 'Building server...'",
+    "start": "node src/server.js",
+    "test": "jest",
+    "test:postman": "newman run postman/collections/*.json -e postman/environments/test.json",
+    "lint": "eslint src/",
+    "format": "prettier --write src/",
+    "setup": "npm install && npm run postman:setup",
+    "postman:setup": "mkdir -p postman/collections postman/environments"
+  },
+  "keywords": ["api", "practice", "nxtgen", "postman"],
+  "author": "NXT Gen Evo",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "helmet": "^7.0.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "jest": "^29.6.2",
+    "newman": "^6.0.0",
+    "newman-reporter-htmlextra": "^1.23.1",
+    "eslint": "^8.45.0",
+    "prettier": "^3.0.0",
+    "nodemon": "^3.0.1"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "name": "NXT Gen Evo Practice Environment",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    }
+  },
+  "forwardPorts": [3000, 8000, 5432, 6379],
+  "portsAttributes": {
+    "3000": {
+      "label": "Frontend Dev Server"
+    },
+    "8000": {
+      "label": "Backend API Server"
+    },
+    "5432": {
+      "label": "PostgreSQL Database"
+    },
+    "6379": {
+      "label": "Redis Cache"
+    }
+  },
+  "postCreateCommand": "npm install && npm run setup",
+  "remoteUser": "vscode",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-eslint",
+        "eamodio.gitlens",
+        "ms-azuretools.vscode-docker",
+        "ms-vscode-remote.remote-ssh",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "shd101wyy.markdown-preview-enhanced",
+        "aaron-bond.better-comments",
+        "Postman.postman-for-vscode"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "git.enableSmartCommit": true,
+        "git.confirmSync": false
+      }
+    }
+  }
+}
