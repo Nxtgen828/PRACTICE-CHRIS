@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: practice-api-service
+  namespace: nxtgen-evo
+  labels:
+    app: practice-api
+    component: backend
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 8000
+    protocol: TCP
+    name: http
+  selector:
+    app: practice-api
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: practice-api-headless
+  namespace: nxtgen-evo
+  labels:
+    app: practice-api
+    component: backend
+spec:
+  type: ClusterIP
+  clusterIP: None
+  ports:
+  - port: 8000
+    targetPort: 8000
+    protocol: TCP
+    name: http
+  selector:
+    app: practice-api

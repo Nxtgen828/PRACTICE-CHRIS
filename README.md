@@ -97,18 +97,42 @@ npm run format       # Format code with Prettier
 
 ## 🚀 Deployment
 
-### GitHub Actions
-Automated deployment pipeline includes:
-- Unit testing
+### Docker Deployment
+Build and run with Docker:
+```bash
+# Build Docker image
+docker build -t practice-api .
+
+# Run with Docker Compose
+docker-compose up -d
+
+# Or run standalone
+docker run -p 8000:8000 --env-file .env practice-api
+```
+
+### Kubernetes Deployment
+Deploy to Kubernetes cluster:
+```bash
+# Apply all manifests
+kubectl apply -f k8s/
+
+# Check deployment status
+kubectl get pods -n nxtgen-evo
+kubectl get services -n nxtgen-evo
+```
+
+### GitHub Actions Pipeline
+Automated CI/CD pipeline includes:
+- Jest unit testing
 - Postman API testing
 - Security scanning with Snyk
-- Deployment to Vercel
+- Docker image build and push to GitHub Container Registry
+- Kubernetes deployment to production cluster
 
-### Manual Deployment
-```bash
-npm run build
-# Deploy to your preferred platform
-```
+### Container Registry
+Images are automatically built and pushed to:
+- **Registry**: `ghcr.io/nxtgen828/practice-chris`
+- **Tags**: `latest`, `main`, `staging`, `dev`
 
 ## 🔒 Security & Monitoring
 
